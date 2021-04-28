@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CourseController;
+use App\Http\Livewire\CourseStatus;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,11 +21,9 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-Route::get('/courses', function() {
-    return "Aqui vai a lista de cursos";
-})->name('courses.index');
+Route::get('/courses', [CourseController::class, 'index'])->name('courses.index');
+Route::get('/courses/{course}', [CourseController::class, 'show'])->name('courses.show');
+//Route::get('/course-status/{course}', [CourseController::class, 'status'])->name('courses.status');
+Route::get('/course-status/{course}', CourseStatus::class)->name('courses.status');
 
-Route::get('/courses/{course}', function($course) {
-    return "Aqui vai info do cursos";
-})->name('courses.show');
-
+Route::get('/courses/{course}/enrolled', [CourseController::class, 'enrolled'])->middleware('auth')->name('courses.enrolled');
