@@ -14,6 +14,10 @@ class CourseController extends Controller
 
     public function show(Course $course)
     {
+
+        // Verificar se o curso está publicado
+        $this->authorize('published', $course);
+
         $similares = Course::where('category_id', $course->category_id)
                         ->where('id', '!=', $course->id)
                         ->where('status', 3)
@@ -24,8 +28,8 @@ class CourseController extends Controller
 
     public function enrolled(Course $course)
     {
-        $course->students()->attach(auth()->user()->id);
-        return redirect()->route('course.status', $course);
+        $course->students()->attach(auth()->user()->id); // matricular usuario
+        return redirect()->route('courses.status', $course);
     }
 
 }
