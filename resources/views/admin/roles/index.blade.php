@@ -17,7 +17,7 @@
     <div class="card">
         <div class="card-body">
             <div class="card-header">
-                <a href="{{ route('admin.roles.create') }}">Criar Curso</a>
+                <a href="{{ route('admin.roles.create') }}">Criar Role</a>
             </div>
             <table class="table table-striped">
                 <thead>
@@ -37,7 +37,7 @@
                                 <form method="post" action="{{ route('admin.roles.destroy', $role) }}">
                                     @method('delete')
                                     @csrf
-                                    <button class="btn btn-sm btn-danger" type="submit">Eliminar</button>
+                                    <button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
                                 </form>
                             </td>
                         </tr>
