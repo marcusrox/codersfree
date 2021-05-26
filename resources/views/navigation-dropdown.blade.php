@@ -76,9 +76,17 @@
                                 {{ __('Profile') }}
                             </x-jet-dropdown-link>
 
-                            <x-jet-dropdown-link href="{{ route('instructor.courses.index') }}">
-                                Instrutor
-                            </x-jet-dropdown-link>
+                            @can('Dashboard - Ver')
+                                <x-jet-dropdown-link href="{{ route('admin.home') }}">
+                                    Administração
+                                </x-jet-dropdown-link>
+                            @endcan
+
+                            @can('Cursos - Ler')
+                                <x-jet-dropdown-link href="{{ route('instructor.courses.index') }}">
+                                    Área do Instrutor
+                                </x-jet-dropdown-link>
+                            @endcan
 
 
                             @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
@@ -185,9 +193,17 @@
                         {{ __('Profile') }}
                     </x-jet-responsive-nav-link>
 
-                    <x-jet-responsive-nav-link href="{{ route('instructor.courses.index') }}" :active="request()->routeIs('instructor.courses.*')">
-                        Instrutor
-                    </x-jet-responsive-nav-link>
+                    @can('Dashboard - Ver')
+                        <x-jet-responsive-nav-link href="{{ route('admin.home') }}" :active="request()->routeIs('admin.*')">
+                           Administração
+                        </x-jet-responsive-nav-link>
+                    @endcan               
+
+                    @can('Cursos - Ler')
+                        <x-jet-responsive-nav-link href="{{ route('instructor.courses.index') }}" :active="request()->routeIs('instructor.courses.*')">
+                            Área do Instrutor
+                        </x-jet-responsive-nav-link>
+                    @endcan
 
                     @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                         <x-jet-responsive-nav-link href="{{ route('api-tokens.index') }}" :active="request()->routeIs('api-tokens.index')">

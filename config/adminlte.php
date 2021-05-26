@@ -244,15 +244,26 @@ return [
         [
             'text'        => 'Dashboard',
             'route'       => 'admin.home',
-            'icon'        => 'fas fa-fw fa-tachometer',
+            'icon'        => 'fas fa-fw fa-tachometer-alt',
+            'can'         => 'Dashboard - Ver'
         ],        
         [
             'text'        => 'Lista de Roles',
             'route'       => 'admin.roles.index',
             'icon'        => 'fas fa-fw fa-user-cog',
+            'active'      => ['admin/roles*'],
+            'can'         => 'Role - Ler'
             /*'label'       => 4,
             'label_color' => 'success',*/
         ],
+        [
+            'text'        => 'Lista de Usuários',
+            'route'       => 'admin.users.index',
+            'icon'        => 'fas fa-fw fa-users',
+            'active'      => ['admin/users*'],
+            'can'         => 'Users - Ler'
+        ],
+
         ['header' => 'account_settings'],
         [
             'text' => 'profile',
@@ -438,5 +449,5 @@ return [
     | https://github.com/jeroennoten/Laravel-AdminLTE/#93-livewire
     */
 
-    'livewire' => false,
+    'livewire' => true,
 ];

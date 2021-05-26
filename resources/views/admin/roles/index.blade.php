@@ -7,11 +7,13 @@
 @stop
 
 @section('content')
+
     @if(session('info'))
         <div class="alert alert-primary" role="alert">
             <strong>Sucesso!</strong> {{ session('info') }}
         </div>
     @endif
+
     <div class="card">
         <div class="card-body">
             <div class="card-header">
@@ -32,7 +34,7 @@
                             <td>{{ $role->name }}</td>
                             <td width="10px"><a class="btn btn-sm btn-secondary" href="{{ route('admin.roles.edit', $role)}}">Edit</a></td>
                             <td width="10px">
-                                <form action="{{ route('admin.roles.destroy', $role) }}">
+                                <form method="post" action="{{ route('admin.roles.destroy', $role) }}">
                                     @method('delete')
                                     @csrf
                                     <button class="btn btn-sm btn-danger" type="submit">Eliminar</button>

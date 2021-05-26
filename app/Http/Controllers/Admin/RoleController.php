@@ -9,6 +9,15 @@ use Spatie\Permission\Models\Role;
 
 class RoleController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('can:Role - Ler')->only('index');
+        $this->middleware('can:Role - Criar')->only('create', 'store');
+        $this->middleware('can:Role - Atualizar')->only('edit', 'update');
+        $this->middleware('can:Role - Excluir')->only('destroy');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -45,7 +54,10 @@ class RoleController extends Controller
         ]);
         $role = Role::create(['name' => $request->input('name')]);
         $role->permissions()->sync($request->input('permissions'));
-        return redirect()->route('admin.roles.index')->with('info', 'Role criada com sucesso!');
+
+        return redirect()
+                    ->route('admin.roles.index')
+                    ->with('info', 'Role criada com sucesso!');
     }
 
     /**
@@ -67,7 +79,8 @@ class RoleController extends Controller
      */
     public function edit(Role $role)
     {
-        return view('admin.roles.edit', compact('role'));
+        $permissions = Permission::all();
+        return view('admin.roles.edit', compact('role', 'permissions'));
     }
 
     /**
@@ -79,8 +92,17 @@ class RoleController extends Controller
      */
     public function update(Request $request, Role $role)
     {
+        $request->validate([
+            'name' => 'required',
+            'permissions' => 'required',
+        ]);
+        
+        $role->update(['name' => $request->name]);
 
-        //
+        $role->permissions()->sync($request->input('permissions'));
+        return redirect()
+                    ->route('admin.roles.index')
+                    ->with('info', 'Role atualizada com sucesso!'); 
     }
 
     /**
@@ -91,6 +113,9 @@ class RoleController extends Controller
      */
     public function destroy(Role $role)
     {
-        //
+        $role->delete();
+        return redirect()
+                    ->route('admin.roles.index')
+                    ->with('info', 'Role excluída com sucesso!');
     }
 }
