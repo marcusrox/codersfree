@@ -1,15 +1,20 @@
 @php
     $nav_links = [
         [
-            'name' => 'Home',
+            'name' => 'Principal',
             'route' => route('home'),
             'active' => request()->routeIs('home')
         ],
         [
-            'name' => 'Cursos',
-            'route' => route('courses.index'),
-            'active' => request()->routeIs('courses.*')
-        ],
+            'name' => 'Contato',
+            'route' => route('contact'),
+            'active' => request()->routeIs('contact')
+        ],       
+        // [
+        //     'name' => 'Contato',
+        //     'route' => route('courses.index'),
+        //     'active' => request()->routeIs('courses.*')
+        // ],
     ];
 @endphp
 
@@ -24,7 +29,9 @@
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <x-jet-application-mark class="block h-9 w-auto" />
+                        <div name="logo" class="block w-auto">
+                            <img src="{{ asset('img/logo_semeadura.png') }}" />
+                        </div>
                     </a>
                 </div>
 
@@ -141,8 +148,10 @@
                         </x-slot>
                     </x-jet-dropdown>
                 @else
-                    <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Login</a>
-                    <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
+                    {{-- <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Entrar</a>
+                    <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Cadastrar</a> --}}
+                    <a href="{{ route('login') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-full">Entrar</a>
+                    <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Cadastrar</a> 
                 @endauth
             </div>
 
@@ -257,11 +266,11 @@
 
             <div class="py-1 border-t border-gray-200">
                 <x-jet-responsive-nav-link href="{{ route('login') }}" :active="request()->routeIs('login')">
-                    Login
+                    Entrar
                 </x-jet-responsive-nav-link>
 
                 <x-jet-responsive-nav-link href="{{ route('register') }}" :active="request()->routeIs('register')">
-                    Register
+                    Cadastrar
                 </x-jet-responsive-nav-link>
             </div>
 

@@ -1,9 +1,10 @@
 <x-app-layout>
     @php
-        $arr_img = ['galaxy-5155754_1920c.jpg', 'network-3396348_1920c.jpg', 'network-3424070_1920c.jpg', 'space-center-693251_1920c.jpg', 'light-1246043_1920.jpg', 'children-593313_1920.jpg', 'despaired-2261021_1920.jpg', 'workspace-1280538_1920.jpg', 'technology-785742_1920.jpg'];
+        //$arr_img = ['galaxy-5155754_1920c.jpg', 'network-3396348_1920c.jpg', 'network-3424070_1920c.jpg', 'space-center-693251_1920c.jpg', 'light-1246043_1920.jpg', 'children-593313_1920.jpg', 'despaired-2261021_1920.jpg', 'workspace-1280538_1920.jpg', 'technology-785742_1920.jpg'];
+        $arr_img = ['technology-785742_1920.jpg'];
         $img = $arr_img[rand(0,count($arr_img)-1)];
     @endphp
-    <section class="bg-cover" style="background-image: url({{ asset('img/'. $img )}})">
+    {{-- <section class="bg-cover" style="background-image: url({{ asset('img/'. $img )}})">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-40">
             <div class="w-full md:w-3/4 lg:w-1/2">
                 <h1 class="text-white text-4xl font-bold">USI - Unidade de Suporte e Infraestrutura</h1>
@@ -12,9 +13,9 @@
                 @livewire('search')
 
             </div>
-        </div>
-    </section>
-    
+        </div>  
+    </section> --}}
+{{--     
     <section class="mt-8">
         <h1 class="text-gray-600 text-center text-3xl mb-6 uppercase">Conteúdo</h1>
 
@@ -57,23 +58,11 @@
                 <p class="text-sm text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit modi est vero omnis architecto doloremque natus error!</p>
             </article>                                    
         </div>
-    </section>
+    </section> --}}
 
-    <section class="mt-24 bg-gray-700 py-12">
-        <h1 class="text-center text-white text-2xl">Não sabe o que fazer ainda?</h1>
-        <p class="text-center text-white">Escolha uma opção acima e explore o máximo do seu potencial produtivo</p>
-
-        <div class="flex justify-center mt-4">
-        <a href="{{ route('courses.index') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-            Catálogo de Serviços    
-        </a>
-        </div>
-          
-    </section>
-
-    <section class="mt-24">
-        <h1 class="text-center text-gray-600 text-3xl uppercase">Últimos Serviços</h1>
-        <p class="text-center text-gray-500 text-sm mb-6">Trabalhe duro e colha os frutos do seu esforço!</p>
+    <section class="mt-10">
+        <h1 class="text-center text-gray-600 text-3xl uppercase">Faça sua inscrição</h1>
+        <p class="text-center text-gray-500 text-sm mb-6">Eventos com inscrições abertas</p>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-8">
             @foreach($courses as $course)
                 <article class="bg-white shadow-lg rounded overflow-hidden">
@@ -102,6 +91,18 @@
                 </article>                
             @endforeach
         </div>
+    </section>
+
+    <section class="mt-24 bg-gray-700 py-12">
+        <h1 class="text-center text-white text-2xl">Não sabe o que fazer ainda?</h1>
+        <p class="text-center text-white">Escolha uma opção acima e explore o máximo do seu potencial produtivo</p>
+
+        <div class="flex justify-center mt-4">
+        <a href="{{ route('courses.index') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            Catálogo de Serviços    
+        </a>
+        </div>
+          
     </section>
 
 </x-app-layout>

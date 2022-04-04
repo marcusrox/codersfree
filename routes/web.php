@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CourseController;
 use App\Http\Livewire\CourseStatus;
 /*
@@ -16,6 +17,7 @@ use App\Http\Livewire\CourseStatus;
 */
 
 Route::get('/', HomeController::class)->name('home');
+Route::get('/contact', ContactController::class)->name('contact');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

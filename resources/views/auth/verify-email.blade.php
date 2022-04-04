@@ -1,16 +1,19 @@
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
-            <x-jet-authentication-card-logo />
+            <div name="logo" class="block w-auto">
+                 <img src="{{ asset('img/logo_semeadura02.png') }}" />
+             </div>
         </x-slot>
 
         <div class="mb-4 text-sm text-gray-600">
-            {{ __('Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn\'t receive the email, we will gladly send you another.') }}
+            Agradecemos por você ter se cadastrado, mas não você ainda não validou o seu endreço de e-mail.
+            Para isso é necessário criar no link que enviamos para o seu e-mail. Caso não o tenha recebido, clique abaixo e enviaremos novamente.
         </div>
 
         @if (session('status') == 'verification-link-sent')
             <div class="mb-4 font-medium text-sm text-green-600">
-                {{ __('A new verification link has been sent to the email address you provided during registration.') }}
+                Um novo link de validação foi enviado para o e-mail que você informou no seu cadastro.
             </div>
         @endif
 
@@ -20,7 +23,7 @@
 
                 <div>
                     <x-jet-button type="submit">
-                        {{ __('Resend Verification Email') }}
+                        Reenviar e-mail de verificação
                     </x-jet-button>
                 </div>
             </form>
@@ -29,7 +32,7 @@
                 @csrf
 
                 <button type="submit" class="underline text-sm text-gray-600 hover:text-gray-900">
-                    {{ __('Logout') }}
+                    Sair
                 </button>
             </form>
         </div>
