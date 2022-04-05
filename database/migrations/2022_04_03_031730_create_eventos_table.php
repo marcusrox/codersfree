@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 use App\Models\Evento;
 
-class CreateCoursesTable extends Migration
+class CreateEventosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -16,8 +16,19 @@ class CreateCoursesTable extends Migration
     public function up()
     {
         Schema::create('eventos', function (Blueprint $table) {
+            $statuses = [
+                Evento::RASCUNHO,
+                Evento::ATIVO,
+                Evento::ARQUIVADO,
+                Evento::RESERVADO04,
+                Evento::RESERVADO05,
+                Evento::RESERVADO06,
+                Evento::RESERVADO07,
+                Evento::RESERVADO08,
+                Evento::RESERVADO09,
+            ];
+            
             $table->id();
-
             $table->string('nome');
             $table->text('descricao');
             $table->date('data_inicio_evento');
@@ -28,7 +39,7 @@ class CreateCoursesTable extends Migration
             $table->date('data_fim_inscricao');
             $table->text('mensagem_apos_inscricao');
             $table->decimal('preco_inscricao', 8, 2);
-            $table->enum('status', [Evento::RASCUNHO, Evento::ATIVO, Evento::ARQUIVADO])->default(Evento::RASCUNHO);
+            $table->enum('status', $statuses)->default(Evento::RASCUNHO);
             $table->string('slug');
 
             // $table->unsignedBigInteger('user_id');
@@ -49,6 +60,6 @@ class CreateCoursesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('courses');
+        Schema::dropIfExists('eventos');
     }
 }

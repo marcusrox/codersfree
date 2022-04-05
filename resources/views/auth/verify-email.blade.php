@@ -7,7 +7,7 @@
         </x-slot>
 
         <div class="mb-4 text-sm text-gray-600">
-            Agradecemos por você ter se cadastrado, mas não você ainda não validou o seu endreço de e-mail.
+            Agradecemos por você ter se cadastrado, mas não você ainda não validou o seu endereço de e-mail.
             Para isso é necessário criar no link que enviamos para o seu e-mail. Caso não o tenha recebido, clique abaixo e enviaremos novamente.
         </div>
 
